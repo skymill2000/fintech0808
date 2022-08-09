@@ -1,24 +1,14 @@
-import logo from "./logo.svg";
 import "./App.css";
-
-const Welecome = ({ age, username }) => {
-  return (
-    <div>
-      <h2>
-        {age} 세 {username} 님 반갑습니다.
-      </h2>
-    </div>
-  );
-};
+import Welcome from "./components/Welcome";
 
 function App() {
   return (
     <div className="App">
       <h1>안녕하세요</h1>
-      <Welecome username={"유관우"} age={33}></Welecome>
-      <Welecome username={"홍길동"} age={33}></Welecome>
-      <Welecome username={"둘리"} age={33}></Welecome>
-      <Welecome username={"도우너"} age={33}></Welecome>
+      <Welcome username={"유관우"} age={33}></Welcome>
+      <Welcome username={"홍길동"} age={33}></Welcome>
+      <Welcome username={"둘리"} age={33}></Welcome>
+      <Welcome username={"도우너"} age={33}></Welcome>
     </div>
   );
 }
