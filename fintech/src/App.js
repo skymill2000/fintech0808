@@ -1,14 +1,12 @@
 import "./App.css";
+import InputExample from "./components/InputExample";
 import Welcome from "./components/Welcome";
 
 function App() {
   return (
     <div className="App">
       <h1>안녕하세요</h1>
-      <Welcome username={"유관우"} age={33}></Welcome>
-      <Welcome username={"홍길동"} age={33}></Welcome>
-      <Welcome username={"둘리"} age={33}></Welcome>
-      <Welcome username={"도우너"} age={33}></Welcome>
+      <InputExample></InputExample>
     </div>
   );
 }
