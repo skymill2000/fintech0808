@@ -40,11 +40,16 @@ let cars = [car1, car2, car3];
  */
 
 cars.map((element) => {
-  if (element.carname === "bmw") {
-    console.log(element.carname);
+  const { carname, ph } = element;
+  /**
+   * const carname = element.carname;
+   * const ph = element.ph;
+   */
+  if (carname === "bmw") {
+    console.log(carname + "는" + ph + "마력 입니다");
     element.stop();
   } else {
-    console.log(element.carname);
+    console.log(carname + "는" + ph + "마력 입니다");
     element.start();
   }
 });
