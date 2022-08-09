@@ -46,10 +46,11 @@ cars.map((element) => {
    * const ph = element.ph;
    */
   if (carname === "bmw") {
-    console.log(carname + "는" + ph + "마력 입니다");
+    console.log(`${carname} 는 ${ph} 마력입니다.`); //템플릿 리터럴 표현
+    //tab 위에 `
     element.stop();
   } else {
-    console.log(carname + "는" + ph + "마력 입니다");
+    console.log(carname + "는" + ph + " 마력 입니다");
     element.start();
   }
 });
