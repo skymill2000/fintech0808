@@ -9,10 +9,14 @@ const NewsPage = () => {
   const [searchList, setSearchList] = useState([]);
   //2. axios를 통해서 데이터를 요청하여 내역 searchList 채우기
 
+  const handleChange = () => {
+    console.log("change Event");
+  };
+
   return (
     <div>
       <AppHeader title={"뉴스 검색"}></AppHeader>
-      <NewsSearch></NewsSearch>
+      <NewsSearch handleChange={handleChange}></NewsSearch>
       <NewsList></NewsList>
     </div>
   );

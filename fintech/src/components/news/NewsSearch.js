@@ -1,7 +1,11 @@
 import React from "react";
 
-const NewsSearch = () => {
-  return <div>NewsSearch</div>;
+const NewsSearch = ({ handleChange }) => {
+  return (
+    <div>
+      <input onChange={handleChange}></input>
+    </div>
+  );
 };
 
 export default NewsSearch;
