@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import AppHeader from "../components/common/AppHeader";
 import NewsList from "../components/news/NewsList";
 import NewsSearch from "../components/news/NewsSearch";
+import axios from "axios";
 
 const NewsPage = () => {
   const [searchInput, setSearchInput] = useState("");
@@ -19,6 +20,14 @@ const NewsPage = () => {
     console.log(searchInput);
     //search input 바탕으로 뉴스 검색 api Request 요청
     //axios 를 이용해서 데이터 리스폰스를 받아온 다음에 setSearchList
+    axios
+      .get(
+        `https://newsapi.org/v2/everything?q=${searchInput}&from=2022-07-10&sortBy=publishedAt&apiKey=78bc6ddd8cdb48ceac76f5f9b9dfc4c5&language=ko`
+      )
+      .then((response) => {
+        console.log(response.data);
+        setSearchList(response.data);
+      });
   };
 
   return (
