@@ -9,6 +9,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Welcome />}></Route>
+        <Route path="/styleTest" element={<StyledComponent />}></Route>
+        <Route path="/inputTest" element={<InputExample />}></Route>
       </Routes>
     </BrowserRouter>
   );
