@@ -26,7 +26,7 @@ const NewsPage = () => {
       )
       .then((response) => {
         console.log(response.data);
-        setSearchList(response.data);
+        setSearchList(response.data.articles);
       });
   };
 

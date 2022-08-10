@@ -3,7 +3,7 @@ import React from "react";
 const NewsList = ({ newsList }) => {
   return (
     <div>
-      {newsList.articles.map((article) => {
+      {newsList.map((article) => {
         return <p>{article.title}</p>;
       })}
     </div>
