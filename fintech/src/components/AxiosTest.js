@@ -3,7 +3,9 @@ import axios from "axios";
 
 const AxiosTest = () => {
   const handleClick = () => {
-    axios.get("https://naver.com").then((data) => {
+    let data = "아직 아무것도 없습니다.";
+    axios.get("https://jsonplaceholder.typicode.com/posts").then((response) => {
+      data = response.data;
       console.log(data);
     });
   };
