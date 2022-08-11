@@ -1,5 +1,5 @@
 import axios from "axios";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import AppHeader from "../components/common/AppHeader";
 
 const MainPage = () => {
@@ -9,6 +9,14 @@ const MainPage = () => {
    * console.log(data.res_list);
    *  1. localstroage 데이터를 가지고 올때 = localstorage.getItem("아이템명");
    * 요청을 만들때는 option 방식으로 작성하여 axios(option) 요청 생성
+   */
+  const [accountList, setAccountList] = useState([]);
+
+  useEffect(() => {
+    getAccountList();
+  }, []);
+  /**
+   * useEffect 활용하여 최초에 1회 마운트시 계좌 목록을 불러옴
    */
 
   const getAccountList = () => {
@@ -26,13 +34,16 @@ const MainPage = () => {
     };
     axios(option).then(({ data }) => {
       console.log(data);
+      setAccountList(data.res_list);
     });
   };
 
-  getAccountList();
   return (
     <div>
       <AppHeader title={"계좌 목록"}></AppHeader>
+      {accountList.map((account) => {
+        return <p>{account.fintech_use_num}</p>;
+      })}
     </div>
   );
 };
