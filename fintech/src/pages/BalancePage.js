@@ -49,6 +49,10 @@ const BalancePage = () => {
     });
   };
 
+  /**
+   * #work6 거래내역 조회 api 활용해서 데이터 조회하기
+   */
+
   return (
     <div>
       <AppHeader title={"잔액조회"}></AppHeader>
