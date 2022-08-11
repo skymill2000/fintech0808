@@ -30,8 +30,17 @@ const AuthResultPage = () => {
       },
       data: parsedUrlEncodedData,
     };
-    axios(option).then((response) => {
-      console.log(response);
+
+    axios(option).then(({ data }) => {
+      console.log({ data });
+      if (data.rsp_code === "A0000") {
+        setAccessToken(data.access_token);
+        setUserSeqNo(data.user_seq_no);
+        localStorage.setItem("accessToken", data.access_token);
+        localStorage.setItem("userSeqNo", data.user_seq_no);
+      } else {
+        alert("토큰 발급에 실패했습니다.");
+      }
     });
   };
 
