@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import AppHeader from "../components/common/AppHeader";
+import MainCard from "../components/main/MainCard";
 
 const MainPage = () => {
   /**
@@ -33,7 +34,6 @@ const MainPage = () => {
       },
     };
     axios(option).then(({ data }) => {
-      console.log(data);
       setAccountList(data.res_list);
     });
   };
@@ -42,7 +42,12 @@ const MainPage = () => {
     <div>
       <AppHeader title={"계좌 목록"}></AppHeader>
       {accountList.map((account) => {
-        return <p>{account.fintech_use_num}</p>;
+        return (
+          <MainCard
+            bankName={account.bank_name}
+            fintechUseNo={account.fintech_use_num}
+          />
+        );
       })}
     </div>
   );
