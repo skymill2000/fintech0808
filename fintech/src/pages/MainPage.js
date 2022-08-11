@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 import AppHeader from "../components/common/AppHeader";
 
@@ -9,6 +10,26 @@ const MainPage = () => {
    *  1. localstroage 데이터를 가지고 올때 = localstorage.getItem("아이템명");
    * 요청을 만들때는 option 방식으로 작성하여 axios(option) 요청 생성
    */
+
+  const getAccountList = () => {
+    const accessToken = localStorage.getItem("accessToken");
+    const userSeqNo = localStorage.getItem("userSeqNo");
+    const option = {
+      method: "GET",
+      url: `v2.0/user/me`,
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+      params: {
+        user_seq_no: userSeqNo,
+      },
+    };
+    axios(option).then(({ data }) => {
+      console.log(data);
+    });
+  };
+
+  getAccountList();
   return (
     <div>
       <AppHeader title={"계좌 목록"}></AppHeader>
