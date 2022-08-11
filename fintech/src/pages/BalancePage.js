@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import AppHeader from "../components/common/AppHeader";
 import queryString from "query-string";
 import { useLocation } from "react-router-dom";
+import axios from "axios";
+import BalanceCard from "../components/balance/BalanceCard";
 
 const BalancePage = () => {
   /**
@@ -13,6 +15,7 @@ const BalancePage = () => {
    * BalanceCard 렌더링 해주세요 !
    */
   const { fintechUseNo } = queryString.parse(useLocation().search);
+  const [balance, setBalance] = useState({});
 
   useEffect(() => {
     getBalance();
@@ -27,11 +30,33 @@ const BalancePage = () => {
   const getBalance = () => {
     const accessToken = localStorage.getItem("accessToken");
     console.log(accessToken, fintechUseNo, genTransId());
+
+    const option = {
+      method: "GET",
+      url: "/v2.0/account/balance/fin_num",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+      params: {
+        bank_tran_id: genTransId(),
+        fintech_use_num: fintechUseNo,
+        tran_dtime: "20220811150100",
+      },
+    };
+
+    axios(option).then(({ data }) => {
+      setBalance(data);
+    });
   };
 
   return (
     <div>
       <AppHeader title={"잔액조회"}></AppHeader>
+      <BalanceCard
+        bankName={balance.bank_name}
+        fintechNo={fintechUseNo}
+        balance={balance.balance_amt}
+      ></BalanceCard>
     </div>
   );
 };
