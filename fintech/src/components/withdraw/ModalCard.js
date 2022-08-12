@@ -73,10 +73,20 @@ const ModalCard = ({ bankName, fintechUseNo, tofintechno }) => {
 
     axios(option).then(({ data }) => {
       console.log(data);
+      if (data.rsp_code === "A0000") {
+        deposit();
+      }
     });
   };
 
-  const deposit = () => {};
+  const deposit = () => {
+    /**
+     * #Last Work
+     * 입금이체 작성해 주세요 !
+     * 2legged token 사용 !
+     * 입금을 하는 계좌를 잘 선택해 주세요
+     */
+  };
 
   const handleChange = (e) => {
     const { value } = e.target;
