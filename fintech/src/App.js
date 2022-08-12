@@ -4,6 +4,7 @@ import NewsPage from "./pages/NewsPage";
 import AuthResultPage from "./pages/AuthResultPage";
 import MainPage from "./pages/MainPage";
 import BalancePage from "./pages/BalancePage";
+import QrCodePage from "./pages/QrCodePage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/authResult" element={<AuthResultPage />}></Route>
         <Route path="/main" element={<MainPage />}></Route>
         <Route path="/balance" element={<BalancePage />}></Route>
+        <Route path="/qr" element={<QrCodePage />}></Route>
       </Routes>
     </BrowserRouter>
   );
