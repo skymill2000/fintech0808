@@ -27,6 +27,8 @@ const WithDrawButton = styled.button`
 `;
 
 const ModalCard = ({ bankName, fintechUseNo, tofintechno }) => {
+  //fintechUseNo : 내계좌
+  //tofintechno : QR 코드로 읽어온 핀테크 계좌
   const [amount, setamount] = useState("");
 
   const genTransId = () => {
@@ -36,8 +38,11 @@ const ModalCard = ({ bankName, fintechUseNo, tofintechno }) => {
   };
 
   const handlePayButtonClick = () => {
-    //출금 이체 발생시키기
-    //data params json
+    // 출금 이체 발생시키기
+    // data params json
+    // tran_amt, fintech_use_num, req_client_fintech_use_num, bank_tran_id 고정값 사용 금지
+    // axios option으로 요청을 작성하기 <- api 요청
+    // application/json 은 데이터를 어떻게 전송?
   };
 
   const deposit = () => {};
