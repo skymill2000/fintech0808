@@ -2,6 +2,8 @@ import React from "react";
 import AppHeader from "../components/common/AppHeader";
 import { QRCodeSVG } from "qrcode.react";
 import styled from "styled-components";
+import { useLocation } from "react-router-dom";
+import queryString from "query-string";
 
 const QRBlock = styled.div`
   display: flex;
@@ -11,11 +13,13 @@ const QRBlock = styled.div`
 `;
 
 const QrCodePage = () => {
+  const { fintechUseNo } = queryString.parse(useLocation().search);
+
   return (
     <div>
       <AppHeader title={"QR코드"}></AppHeader>
       <QRBlock>
-        <QRCodeSVG size={200} value="https://reactjs.org/" />
+        <QRCodeSVG size={200} value={fintechUseNo} />
       </QRBlock>
     </div>
   );
