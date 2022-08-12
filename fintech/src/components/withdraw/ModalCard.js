@@ -80,12 +80,52 @@ const ModalCard = ({ bankName, fintechUseNo, tofintechno }) => {
   };
 
   const deposit = () => {
+    const twoLeggedToken =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJNMjAyMjAxNTY0Iiwic2NvcGUiOlsib29iIl0sImlzcyI6Imh0dHBzOi8vd3d3Lm9wZW5iYW5raW5nLm9yLmtyIiwiZXhwIjoxNjY4MDYzNzk2LCJqdGkiOiJmNWRhOGUzMC02YTYzLTQ3ODAtOGJjYy1lMmU1OTkzYjY0NzMifQ.rGVneysMG1GlAhBE_2Yom0NqAqKZigdHdezDM5pUw2k";
+
     /**
      * #Last Work
      * 입금이체 작성해 주세요 !
      * 2legged token 사용 !
      * 입금을 하는 계좌를 잘 선택해 주세요
      */
+
+    const data = {
+      cntr_account_type: "N",
+      cntr_account_num: "200000000001",
+      wd_pass_phrase: "NONE",
+      wd_print_content: "환불금액",
+      name_check_option: "off",
+      tran_dtime: "20220812130000",
+      req_cnt: "1",
+      req_list: [
+        {
+          tran_no: "1",
+          bank_tran_id: genTransId(),
+          fintech_use_num: tofintechno,
+          print_content: "오픈서비스캐시백",
+          tran_amt: amount,
+          req_client_name: "홍길동",
+          req_client_fintech_use_num: fintechUseNo,
+          req_client_num: "HONGGILDONG1234",
+          transfer_purpose: "ST",
+        },
+      ],
+    };
+    const option = {
+      method: "POST",
+      url: "/v2.0/transfer/deposit/fin_num",
+      headers: {
+        Authorization: `Bearer ${twoLeggedToken}`,
+      },
+      data: data,
+    };
+
+    axios(option).then(({ data }) => {
+      if (data.rsp_code === "A0000") {
+        alert("결제 완료 !");
+      }
+    });
   };
 
   const handleChange = (e) => {
