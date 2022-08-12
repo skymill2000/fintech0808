@@ -43,6 +43,17 @@ const ModalCard = ({ bankName, fintechUseNo, tofintechno }) => {
     // tran_amt, fintech_use_num, req_client_fintech_use_num, bank_tran_id 고정값 사용 금지
     // axios option으로 요청을 작성하기 <- api 요청
     // application/json 은 데이터를 어떻게 전송?
+    // 결과를 로그로 작성
+    const accessToken = localStorage.getItem("accessToken");
+    const data = {};
+    const option = {
+      method: "POST",
+      url: "/v2.0/transfer/withdraw/fin_num",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+      data: data,
+    };
   };
 
   const deposit = () => {};
